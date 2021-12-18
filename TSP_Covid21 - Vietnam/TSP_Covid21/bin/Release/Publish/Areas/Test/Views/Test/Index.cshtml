@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Test/Views/Shared/TestMain.cshtml";
+}
+
+<style>
+    #Login, #SignUp {
+        width: 500px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+        background-color: black;
+        color: white;
+    }
+
+    #btn_Login:hover, #btn_Signup:hover, #Btn_Signup1:hover, #Come_Back:hover {
+        background: #888888;
+    }
+
+    #Login table{
+        width: 500px;
+    }
+
+    #Login input {
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+
+<div id="Login">
+    <div>
+        <input type="text" placeholder="Nhập tên search sensor" id="user" />
+    </div>
+    <div>
+        <input type="button" id="btn_search" value="Search" />
+    </div>
+
+    <div id="infSensor">
+
+    </div>
+</div>
+
+<script>
+    $("#btn_search").click(function () {
+        var user = $("#user").val();
+
+        $.ajax({
+            url: '@Url.Action("Sensors", "Test")',
+            type: "POST",
+            data: {
+                user: user,
+            },
+            success: function (result) {
+                $("#infSensor").html(result);
+            }
+        })
+    })
+</script>
+

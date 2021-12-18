@@ -1,0 +1,20 @@
+﻿@model IEnumerable<TSP_Covid21.Areas.Test.Controllers.InfSensor>
+
+<table>
+    <thead>
+        <tr>
+            <th>Tên Sensor</th>
+            <th>Mô tả Sensor</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var a in @Model)
+        {
+            <tr>
+                <td>@a.SensorName</td>
+                <td>@a.SensorDes</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
